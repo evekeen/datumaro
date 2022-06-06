@@ -247,7 +247,7 @@ class Converter(CliPlugin):
         path = path or osp.join(basedir, self._make_image_filename(item, name=name, subdir=subdir))
         path = osp.abspath(path)
 
-        item.media.save(path)
+        item.media.save(path, quality=95)
 
     def _save_point_cloud(self, item=None, path=None, *, name=None, subdir=None, basedir=None):
         assert not (
