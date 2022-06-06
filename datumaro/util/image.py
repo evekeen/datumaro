@@ -117,6 +117,7 @@ def save_image(
 
         with open(path, "wb") as f:
             f.write(image_bytes)
+        print("Written as bytes")
     elif backend == _IMAGE_BACKENDS.PIL:
         from PIL import Image
 
@@ -129,7 +130,9 @@ def save_image(
         if len(image.shape) == 3 and image.shape[2] in {3, 4}:
             image[:, :, :3] = image[:, :, 2::-1]  # BGR to RGB
         image = Image.fromarray(image)
+        image.convert('RGB')
         image.save(path, **params)
+        print("Converted to JPG")
     else:
         raise NotImplementedError()
 
