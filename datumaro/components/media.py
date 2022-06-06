@@ -160,7 +160,7 @@ class Image(MediaElement):
             if cur_path != path:
                 shutil.copyfile(cur_path, path)
         else:
-            save_image(path, self.data)
+            save_image(path, self.data, jpeg_quality=95)
 
 
 class ByteImage(Image):
